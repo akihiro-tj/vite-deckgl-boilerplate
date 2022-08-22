@@ -1,4 +1,4 @@
-# Deckgl-TypeScript
+# deck.gl-TypeScript
 
 ## Setup
 
