@@ -1,4 +1,4 @@
-# deck.gl-TypeScript
+# Vite-deck.gl-TypeScript
 
 ## Setup
 
