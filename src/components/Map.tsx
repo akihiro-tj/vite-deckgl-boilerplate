@@ -3,6 +3,10 @@ import { BitmapLayer } from '@deck.gl/layers';
 import DeckGL from '@deck.gl/react';
 import React, { useState } from 'react';
 
+type Props = {
+  baseMapURL: string;
+};
+
 const INITIAL_VIEW_STATE = {
   longitude: -122.4,
   latitude: 37.74,
@@ -12,17 +16,13 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-const Map: React.FC = () => {
+const Map: React.FC<Props> = ({ baseMapURL }) => {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 
   const layers = [
     new TileLayer({
-      // https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers
-      data: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
-
-      minZoom: 0,
-      maxZoom: 19,
-      tileSize: 256,
+      id: 'tile',
+      data: baseMapURL,
 
       renderSubLayers: props => {
         const {

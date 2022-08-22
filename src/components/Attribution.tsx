@@ -42,14 +42,12 @@ const Attribution: React.FC<Props> = ({ contributors }) => {
     <Container>
       <CopyRight>&copy;</CopyRight>
       {contributors.map(contributor => (
-        <Link
-          key={contributor.name}
-          href={contributor.url}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {contributor.name}
-        </Link>
+        <React.Fragment key={contributor.name}>
+          <Link href={contributor.url} target="_blank" rel="noreferrer">
+            {contributor.name}
+          </Link>
+          {contributor.name === 'OpenStreetMap' && <span> contributors</span>}
+        </React.Fragment>
       ))}
     </Container>
   );

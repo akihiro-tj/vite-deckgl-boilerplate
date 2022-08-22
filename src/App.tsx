@@ -6,7 +6,8 @@ import Map from './components/Map';
 const App: React.FC = () => {
   return (
     <React.Fragment>
-      <Map />
+      {/* https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers */}
+      <Map baseMapURL="https://c.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Attribution
         contributors={[
           {
