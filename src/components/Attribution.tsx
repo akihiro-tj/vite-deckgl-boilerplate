@@ -31,9 +31,20 @@ const CopyRight = styled.span`
   font-size: 1rem;
 `;
 
-const Link = styled.a`
+const Contributor = styled.span`
+  position: relative;
+  display: inline-block;
+
   &:not(:nth-last-child(1)) {
     margin-right: 0.5em;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      content: ',';
+      display: block;
+    }
   }
 `;
 
@@ -42,12 +53,12 @@ const Attribution: React.FC<Props> = ({ contributors }) => {
     <Container>
       <CopyRight>&copy;</CopyRight>
       {contributors.map(contributor => (
-        <React.Fragment key={contributor.name}>
-          <Link href={contributor.url} target="_blank" rel="noreferrer">
+        <Contributor key={contributor.name}>
+          <a href={contributor.url} target="_blank" rel="noreferrer">
             {contributor.name}
-          </Link>
+          </a>
           {contributor.name === 'OpenStreetMap' && <span> contributors</span>}
-        </React.Fragment>
+        </Contributor>
       ))}
     </Container>
   );
