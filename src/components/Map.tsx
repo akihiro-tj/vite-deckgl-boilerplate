@@ -1,7 +1,7 @@
 import { TileLayer } from '@deck.gl/geo-layers';
 import { BitmapLayer } from '@deck.gl/layers';
 import DeckGL from '@deck.gl/react';
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 
 type Props = {
   baseMapURL: string;
@@ -16,7 +16,7 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-const Map: React.FC<Props> = ({ baseMapURL }) => {
+const Map: FC<Props> = ({ baseMapURL }) => {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 
   const layers = [

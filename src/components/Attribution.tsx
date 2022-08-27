@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 
 type Props = {
@@ -10,7 +10,7 @@ type Contributor = {
   url: string;
 };
 
-const Container = styled.div`
+const SAttribution = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -26,12 +26,12 @@ const Container = styled.div`
   font-size: 0.75rem;
 `;
 
-const CopyRight = styled.span`
+const SCopyRight = styled.span`
   margin-right: 0.25em;
   font-size: 1rem;
 `;
 
-const Contributor = styled.span`
+const SContributor = styled.span`
   position: relative;
   display: inline-block;
 
@@ -48,19 +48,19 @@ const Contributor = styled.span`
   }
 `;
 
-const Attribution: React.FC<Props> = ({ contributors }) => {
+const Attribution: FC<Props> = ({ contributors }) => {
   return (
-    <Container>
-      <CopyRight>&copy;</CopyRight>
+    <SAttribution>
+      <SCopyRight>&copy;</SCopyRight>
       {contributors.map(contributor => (
-        <Contributor key={contributor.name}>
+        <SContributor key={contributor.name}>
           <a href={contributor.url} target="_blank" rel="noreferrer">
             {contributor.name}
           </a>
           {contributor.name === 'OpenStreetMap' && <span> contributors</span>}
-        </Contributor>
+        </SContributor>
       ))}
-    </Container>
+    </SAttribution>
   );
 };
 
