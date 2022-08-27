@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC, Fragment } from 'react';
 
 import Attribution from './components/Attribution';
 import Map from './components/Map';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
-    <React.Fragment>
+    <Fragment>
       {/* https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers */}
       <Map baseMapURL="https://c.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Attribution
@@ -16,7 +16,7 @@ const App: React.FC = () => {
           },
         ]}
       />
-    </React.Fragment>
+    </Fragment>
   );
 };
 
