@@ -1,17 +1,15 @@
-import { Logo } from './components/Logo';
+import { Contributor } from './components/Attribution';
 
-export const LOGO: { [key: string]: Logo } = {
-  vite: {
-    href: 'https://vitejs.dev',
-    src: 'vite.svg',
-    alt: 'Vite Logo',
-    shadowColor: 'var(--color-vite-logo)',
-  },
-  react: {
-    href: 'https://reactjs.org',
-    src: 'react.svg',
-    alt: 'React Logo',
-    shadowColor: 'var(--color-react-logo)',
-    isRotating: true,
-  },
+export const BASE_MAP: {
+  url: string;
+  contributors: Contributor[];
+} = {
+  // https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers
+  url: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  contributors: [
+    {
+      url: 'https://www.openstreetmap.org/copyright',
+      name: 'OpenStreetMap',
+    },
+  ],
 };

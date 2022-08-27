@@ -1,9 +1,9 @@
 import { TileLayer } from '@deck.gl/geo-layers';
 import { BitmapLayer } from '@deck.gl/layers';
 import DeckGL from '@deck.gl/react';
-import { FC, useState } from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
-type Props = {
+export type Map = {
   baseMapURL: string;
 };
 
@@ -16,31 +16,37 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-const Map: FC<Props> = ({ baseMapURL }) => {
+const Map: FC<Map> = ({ baseMapURL }) => {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 
-  const layers = [
-    new TileLayer({
-      id: 'tile',
-      data: baseMapURL,
+  const layers = useMemo(
+    () => [
+      new TileLayer({
+        id: 'tile',
+        data: baseMapURL,
 
-      renderSubLayers: props => {
-        const {
-          bbox: { west, south, east, north },
-        } = props.tile;
+        renderSubLayers: props => {
+          const {
+            bbox: { west, south, east, north },
+          } = props.tile;
 
-        return new BitmapLayer(props, {
-          data: null,
-          image: props.data,
-          bounds: [west, south, east, north],
-        });
-      },
-    }),
-  ];
+          return new BitmapLayer(props, {
+            data: null,
+            image: props.data,
+            bounds: [west, south, east, north],
+          });
+        },
+      }),
+    ],
+    [baseMapURL],
+  );
 
-  const handleViewStateChange = ({ viewState }: { viewState: any }) => {
-    setViewState(viewState);
-  };
+  const handleViewStateChange = useCallback(
+    ({ viewState }: { viewState: any }) => {
+      setViewState(viewState);
+    },
+    [],
+  );
 
   return (
     <DeckGL
@@ -52,4 +58,4 @@ const Map: FC<Props> = ({ baseMapURL }) => {
   );
 };
 
-export default Map;
+export default memo(Map);

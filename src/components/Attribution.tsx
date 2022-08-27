@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import styled from 'styled-components';
 
-type Props = {
+export type Attribution = {
   contributors: Contributor[];
 };
 
-type Contributor = {
+export type Contributor = {
   name: string;
   url: string;
 };
@@ -48,7 +48,7 @@ const SContributor = styled.span`
   }
 `;
 
-const Attribution: FC<Props> = ({ contributors }) => {
+const Attribution: FC<Attribution> = ({ contributors }) => {
   return (
     <SAttribution>
       <SCopyRight>&copy;</SCopyRight>
@@ -64,4 +64,4 @@ const Attribution: FC<Props> = ({ contributors }) => {
   );
 };
 
-export default Attribution;
+export default memo(Attribution);
