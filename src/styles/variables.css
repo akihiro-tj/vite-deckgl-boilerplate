@@ -1,4 +1,6 @@
 :root {
+  --font-family: Inter, 'Noto Sans JP', sans-serif;
+
   --color-text: #333;
   --color-attr-bg: #ffffffcc;
 
