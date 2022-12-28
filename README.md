@@ -6,7 +6,7 @@
 $ yarn
 ```
 
-## Development
+## Develop
 
 ```bash
 $ yarn dev
